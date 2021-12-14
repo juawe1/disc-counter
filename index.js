@@ -24,13 +24,13 @@ client.on('messageCreate', async msg =>{
     };
 });
 
-client.on('messageDelete', async msg => {
+/*client.on('messageDelete', async msg => {
     client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Someone deleted a message, the message was '${msg}'`);
-})
+})*/
 
 client.on('guildMemberAdd', async member =>{
     if (member.user.id === "589773384443887637"){
-        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has returned`);
+        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has come back for the ${KickAmount} times`);
     }else{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`${member.user.tag} has just joined`);
     };
