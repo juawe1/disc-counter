@@ -6,6 +6,7 @@ const {Client} = require('discord.js');
 
 const client = new Client({ intents: 583 });
 var KickAmount = 0;
+var SamKicks = 0;
 
 
 client.on('ready', () =>{
@@ -42,9 +43,10 @@ client.on('guildMemberRemove', async member =>{
         KickAmount += 1
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has been kicked ${KickAmount} times.`);
     }else if (member.user.id === config.samID) {
+        SamKicks += 1;
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Sam has been kicked ${KickAmount} times because he cant spell.`);
     }else if (member.user.id === config.harveyID) {
-        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Harvey has been kicked ${KickAmount} times because hes a nonce init.`);
+        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Harvey has been kicked times because hes a nonce init.`);
     }else{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`${member.user.tag} has been removed because he made dom cry`);
     };
