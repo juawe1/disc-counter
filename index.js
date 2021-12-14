@@ -41,6 +41,10 @@ client.on('guildMemberRemove', async member =>{
     if (member.user.id === config.lewisID){
         KickAmount += 1
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has been kicked ${KickAmount} times.`);
+    }else if (member.user.id === config.samID) {
+        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Sam has been kicked ${KickAmount} times because he cant spell.`);
+    }else if (member.user.id === config.harveyID) {
+        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Harvey has been kicked ${KickAmount} times because hes a nonce init.`);
     }else{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`${member.user.tag} has been removed because he made dom cry`);
     };
