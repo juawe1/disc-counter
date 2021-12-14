@@ -44,10 +44,16 @@ client.on('guildMemberAdd', async member =>{
 client.on('guildMemberRemove', async member =>{
 
     if (member.user.id === config.lewisID){
-        KickAmount += 1
+        console.log(member.user.id);
+        console.log(KickAmount);
+        let KickAmount = KickAmount + 1;
+        console.log(KickAmount);
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has been kicked ${KickAmount} times.`);
     }else if (member.user.id === config.samID) {
-        SamKicks += 1;
+        console.log(member.user.id);
+        console.log(SamKicks);
+        let SamKicks = SamKicks + 1;
+        console.log(SamKicks);
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Sam has been kicked ${KickAmount} times because he cant spell.`);
     }else if (member.user.id === config.harveyID) {
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Harvey has been kicked times because hes a nonce init.`);
