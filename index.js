@@ -12,7 +12,7 @@ var SamKicks = 0;
 client.on('ready', () =>{
 
     console.log(`Logged in as ${client.user.tag}`)
-
+    console.log(KickAmount, SamKicks)
     if (testing){
        client.guilds.cache.get("919382180449370173").channels.cache.get("919382180449370176").send("Spook!");
     };
