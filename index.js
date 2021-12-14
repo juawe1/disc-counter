@@ -22,6 +22,10 @@ client.on('ready', () =>{
 client.on('messageCreate', async msg =>{
     if (msg.content === "!count"){
         msg.reply(`Lewis has been kicked ${KickAmount}`)
+    }else if (msg.content === "!count sam") {
+        msg.reply(`Sam has been kicked ${SamKicks}`)
+    }else if (msg.content === "!help"){
+        msg.reply('This bot counts how many times someone has been kicked for making dom cry. Type "!count" for lewis or "!count sam" for sam')
     };
 });
 
