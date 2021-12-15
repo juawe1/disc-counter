@@ -37,6 +37,7 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "!data"){
         tempData = kick_read()
         console.log(tempData)
+        console.log(kick_increase(tempData))
     };
 });
 
@@ -86,6 +87,15 @@ function kick_increase(data){
     let tempData = parseInt(data)
     tempData += 1
     console.log(tempData)
+
+    fs.writeFileSync('./kick_amounts.txt', " ", err =>{
+        if (err) {
+            console.log(err)
+            return
+        }
+        console.log("file cleared for new write")
+    })
+
     fs.writeFile('./kick_amounts.txt', tempData.toString(), err =>{
         if (err) {
             console.log(err)
