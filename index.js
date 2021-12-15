@@ -38,6 +38,13 @@ client.on('messageCreate', async msg =>{
         tempData = kick_read()
         console.log(tempData)
         console.log(kick_increase(tempData))
+        fs.readFileSync('./kick_amounts.txt', 'utf-8', (err, data)=>{
+            if (err){
+                console.log(err)
+                return
+            }
+            console.log(data)
+        })
     };
 });
 
