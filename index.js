@@ -35,7 +35,8 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "!help"){
         msg.reply('This bot counts how many times someone has been kicked for making dom cry. Type "!count" for lewis or "!count sam" for sam')
     }else if (msg.content === "!data"){
-        kick_read()
+        tempData = kick_read()
+        console.log(tempData)
     };
 });
 
