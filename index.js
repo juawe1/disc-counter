@@ -62,7 +62,7 @@ client.on('guildMemberAdd', async member =>{
 
 client.on('guildMemberRemove', member =>{
 
-    if (member === config.samID){
+    if (member.user.id === config.samID){
         console.log(member);
         data = kick_read()
         console.log(data)
