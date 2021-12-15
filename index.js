@@ -13,7 +13,7 @@ const client = new Client({ intents: 583 });
 client.on('ready', () =>{
 
     console.log(`Logged in as ${client.user.tag}`)
-    let data = 0
+    let data = '0'
     fs.writeFile('./kick_amounts.txt', data, err =>{
         if (err) {
             console.log(err)
