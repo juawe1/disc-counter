@@ -13,12 +13,13 @@ const client = new Client({ intents: 583 });
 client.on('ready', () =>{
 
     console.log(`Logged in as ${client.user.tag}`)
-    fs.writeFile('./kick_amounts.txt', '0', err =>{
+    let data = 0
+    fs.writeFile('./kick_amounts.txt', data, err =>{
         if (err) {
             console.log(err)
             return
         }
-        console.log("file written successfully")
+        console.log(`file written successfully, data written: ${data}`)
     })
     if (testing){
        client.guilds.cache.get("919382180449370173").channels.cache.get("919382180449370176").send("Spook!");
