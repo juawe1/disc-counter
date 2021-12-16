@@ -53,7 +53,7 @@ client.on('messageCreate', async msg =>{
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
         console.log(`quote to add: ${msg}`)
-        add_quote(msg);
+        await add_quote(msg);
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
@@ -137,7 +137,7 @@ function kick_increase(data){
     return
 }
 
-function add_quote(msg){
+async function add_quote(msg){
     quote_to_add = msg.toString().replace('!add', ' ');
     fs.writeFileSync('./dom_quotes.txt', quote_to_add, err =>{
         if (err) {
