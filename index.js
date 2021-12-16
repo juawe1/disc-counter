@@ -47,8 +47,8 @@ client.on('messageCreate', async msg =>{
                 return
             }
             console.log(data)
+            msg.reply(`number ${data} in file now`)
         })
-        msg.reply(`number ${data} in file now`)
     };
 });
 
