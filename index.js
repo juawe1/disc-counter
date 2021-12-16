@@ -163,8 +163,6 @@ function read_quote(){
             console.log(err)
             return
         }
-        console.log(data)
-        console.log("quote read")
         return data.toString()
     })
     }else{
