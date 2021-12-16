@@ -137,22 +137,19 @@ function kick_increase(data){
     return
 }
 
-/*function add_quote(msg){
+function add_quote(msg){
     quote_to_add = msg.toString().replace('!add', ' ');
-    fs.appendFileSync('./dom_quotes.txt', quote_to_add+"\r\n", err =>{
+    fs.appendFileSync('dom_quotes.txt', quote_to_add, err =>{
         if (err) {
             console.log(err)
             return
         }
-        console.log(`quote written to file successfully, quote add: ${quote_to_add}`);
+        console.log(`'${quote_to_add}' written to quote file`)
         return
-    });
-    return
-}*/
+    })
+}
 
-const logger = fs.createWriteStream('dom_quotes.txt', {
-    flags: 'a'
-})
+
 
 function read_quote(){
     fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
