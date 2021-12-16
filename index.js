@@ -52,7 +52,12 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "sam"){
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
-        msg.reply("this works");
+        console.log(`quote to add: ${msg}`)
+        add_quote(msg);
+        console.log("quote added to file")
+        msg.reply("Quote has been added :)")
+    }else if (msg.content === "!quote"){
+        msg.reply(read_quote)
     };
 });
 
@@ -128,6 +133,30 @@ function kick_increase(data){
         }
         console.log(`data written successfully, the data was ${tempData}`)
         return 
+    })
+    return
+}
+
+function add_quote(msg){
+    quote_to_add = msg.replace('!add', '');
+    fs.writeFile('./dom_quotes.txt', quote_to_add, err =>{
+        if (err) {
+            console.log(err)
+            return
+        }
+        console.log(`quote written to file successfully, quote add: ${quote_to_add}`);
+        return
+    });
+    return
+}
+
+function read_quote(){
+    fs.readFile('./dom_quotes.txt', 'utf-8', (err, quote) =>{
+        if(err){
+            console.log(err)
+            return
+        }
+        return quote
     })
     return
 }
