@@ -160,5 +160,4 @@ function read_quote(){
         console.log("quote read")
         return
     })
-    return
 }
