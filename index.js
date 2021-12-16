@@ -166,7 +166,9 @@ function read_quote(){
         console.log("quote read")
         return data
     })
+    }else{
+        console.log("file is currently empty")
+        return "empty"
     }
-    console.log("file is currently empty")
-    return "empty"
+   
 };
