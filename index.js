@@ -158,5 +158,5 @@ function read_quote(){
         }
         return quote
     })
-    return
+    return quote.toString()
 }
