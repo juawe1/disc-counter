@@ -57,7 +57,7 @@ client.on('messageCreate', async msg =>{
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
-        msg.reply(read_quote)
+        read_quote()
     };
 });
 
@@ -158,5 +158,5 @@ function read_quote(){
         }
         return quote
     })
-    return quote.toString()
+    console.log(quote)
 }
