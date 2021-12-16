@@ -151,12 +151,13 @@ function add_quote(msg){
 }
 
 function read_quote(){
-    fs.readFileSync('./dom_quotes.txt', 'utf-8', (err, quote) =>{
+    fs.readFileSync('./dom_quotes.txt', 'utf-8', (err, data) =>{
         if(err){
             console.log(err)
             return
         }
-        return quote
+        console.log(data)
+        return
     })
-    console.log(quote)
+    return
 }
