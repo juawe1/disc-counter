@@ -57,7 +57,7 @@ client.on('messageCreate', async msg =>{
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
-        read_quote()
+        msg.reply(read_quote())
     };
 });
 
