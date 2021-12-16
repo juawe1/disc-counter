@@ -158,7 +158,7 @@ function read_quote(){
         crlfDelay: Infinity
     });
 
-    for await (const line of rl) {
+    for (const line of rl) {
         console.log(line)
     };
 
