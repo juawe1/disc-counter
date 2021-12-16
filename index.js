@@ -57,7 +57,10 @@ client.on('messageCreate', async msg =>{
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
-        msg.reply(read_quote())
+        data = read_quote()
+        if (data !== "empty"){
+            msg.reply(data)
+        }
     };
 });
 
@@ -161,9 +164,9 @@ function read_quote(){
         }
         console.log(data)
         console.log("quote read")
-        return
+        return data
     })
     }
     console.log("file is currently empty")
-    return
+    return "empty"
 };
