@@ -151,14 +151,9 @@ function add_quote(msg){
 }
 
 function read_quote(){
-    const fileStream = fs.createReadStream('./dom_quotes.txt');
+    let quotes = fs.readFileSync('./dom_quotes.txt', 'utf-8')
 
-    const rl = readline.createInterface({
-        input: fileStream,
-        crlfDelay: Infinity
-    });
-
-    for (const line of rl) {
+    for (const line of quotes) {
         console.log(line)
     };
 
