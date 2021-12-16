@@ -157,6 +157,7 @@ function read_quote(){
             return
         }
         console.log(data)
+        console.log("quote read")
         return
     })
     return
