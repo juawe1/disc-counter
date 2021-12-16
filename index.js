@@ -49,6 +49,8 @@ client.on('messageCreate', async msg =>{
             console.log(data)
             msg.reply(`number ${data} in file now`)
         })
+    }else if (msg.content === "sam"){
+        msg.reply("but miller said")
     };
 });
 
