@@ -138,7 +138,7 @@ function kick_increase(data){
 }
 
 function add_quote(msg){
-    quote_to_add = msg.toString().replace('!add', '');
+    quote_to_add = msg.toString().replace('!add', ' ');
     fs.writeFileSync('./dom_quotes.txt', quote_to_add, err =>{
         if (err) {
             console.log(err)
