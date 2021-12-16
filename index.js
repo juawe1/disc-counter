@@ -139,7 +139,7 @@ function kick_increase(data){
 
 function add_quote(msg){
     quote_to_add = msg.toString().replace('!add', ' ');
-    fs.appendFileSync('dom_quotes.txt', quote_to_add+"\n\a", err =>{
+    fs.appendFileSync('dom_quotes.txt', quote_to_add+"\n", err =>{
         if (err) {
             console.log(err)
             return
