@@ -29,14 +29,17 @@ client.on('ready', () =>{
 
 client.on('messageCreate', async msg =>{
     if (msg.content === "!count"){
-        //msg.reply(`Lewis has been kicked ${KickAmount}`)
+        data = kick_read()
+        msg.reply(`Lewis has been kicked ${data}`)
     }else if (msg.content === "!count sam") {
-        //msg.reply(`Sam has been kicked ${SamKicks}`)
+        data=kick_read()
+        msg.reply(`Sam has been kicked ${data}`)
     }else if (msg.content === "!help"){
         msg.reply('This bot counts how many times someone has been kicked for making dom cry. Type "!count" for lewis or "!count sam" for sam')
     }else if (msg.content === "!data"){
         tempData = kick_read()
         console.log(tempData)
+        msg.reply(`current number in file: ${tempData}`)
         console.log(kick_increase(tempData))
         fs.readFile('./kick_amounts.txt', 'utf-8', (err, data)=>{
             if (err){
@@ -45,6 +48,7 @@ client.on('messageCreate', async msg =>{
             }
             console.log(data)
         })
+        msg.reply(`number ${data} in file now`)
     };
 });
 
@@ -54,7 +58,8 @@ client.on('messageCreate', async msg =>{
 
 client.on('guildMemberAdd', async member =>{
     if (member.user.id === "589773384443887637"){
-        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has come back for the ${KickAmount} times`);
+        data=kick_read()
+        client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has come back for the ${data} times`);
     }else{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`${member.user.tag} has just joined`);
     };
@@ -62,18 +67,27 @@ client.on('guildMemberAdd', async member =>{
 
 client.on('guildMemberRemove', member =>{
 
-    if (member.user.id === config.samID){
-        console.log(member);
-        data = kick_read()
-        console.log(data)
+    if (member.user.id === config.lewisID){
+        console.log(member.user.id);
+        data = kick_read();
+        console.log(data);
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has been kicked ${data} times.`);
-        console.log(`Lewis has been kicked ${data} times`)
-        kick_increase(data)
-    }else if (member === config.lewisID) {
-        console.log(member);
+        console.log(`Lewis has been kicked ${data} times`);
+        kick_increase(data);
+    }else if (member === config.samID) {
+        console.log(member.user.id);
+        data = kick_read();
+        console.log(data);
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Sam has been kicked ${KickAmount} times because he cant spell.`);
+        console.log(`Sam has been kicked ${data} times`);
+        kick_increase(data);
     }else if (member === config.harveyID) {
+        console.log(member.user.id);
+        data = kick_read();
+        console.log(data);
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Harvey has been kicked times because hes a nonce init.`);
+        console.log(`Harvey has been kicked ${data} times`);
+        kick_increase(data);
     }else{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`${member.user.tag} has been removed because he made dom cry`);
     };
@@ -95,7 +109,7 @@ function kick_increase(data){
     tempData += 1
     console.log(tempData)
 
-    fs.writeFileSync('./kick_amounts.txt', " ", err =>{
+    fs.writeFileSync('./kick_amounts.txt', "", err =>{
         if (err) {
             console.log(err)
             return
