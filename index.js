@@ -157,7 +157,7 @@ function add_quote(msg){
 function read_quote(){
     const stat = fs.statSync('./dom_quotes.txt');
     console.log(stat.size)
-    if (stat > 0){
+    if (parseInt(stat) > 0){
         fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
         if(err){
             console.log(err)
