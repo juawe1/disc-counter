@@ -139,7 +139,7 @@ function kick_increase(data){
 
 function add_quote(msg){
     quote_to_add = msg.replace('!add', '');
-    fs.writeFile('./dom_quotes.txt', quote_to_add, err =>{
+    fs.writeFileSync('./dom_quotes.txt', quote_to_add, err =>{
         if (err) {
             console.log(err)
             return
@@ -151,7 +151,7 @@ function add_quote(msg){
 }
 
 function read_quote(){
-    fs.readFile('./dom_quotes.txt', 'utf-8', (err, quote) =>{
+    fs.readFileSync('./dom_quotes.txt', 'utf-8', (err, quote) =>{
         if(err){
             console.log(err)
             return
