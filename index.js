@@ -51,6 +51,8 @@ client.on('messageCreate', async msg =>{
         })
     }else if (msg.content === "sam"){
         msg.reply("but miller said")
+    }else if (msg.content === "!add quote"){
+        msg.reply("this works");
     };
 });
 
