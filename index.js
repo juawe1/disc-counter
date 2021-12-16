@@ -151,7 +151,18 @@ function add_quote(msg){
 }
 
 function read_quote(){
-    fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
+    const fileStream = fs.createReadStream('./dom_quotes.txt');
+
+    const rl = readline.createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+    });
+
+    for await (const line of rl) {
+        console.log(line)
+    };
+
+    /*fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
         if(err){
             console.log(err)
             return
@@ -159,5 +170,5 @@ function read_quote(){
         console.log(data)
         console.log("quote read")
         return
-    })
-}
+    })*/
+};
