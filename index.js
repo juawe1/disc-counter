@@ -1,6 +1,7 @@
 const testing = false;
 const fs = require('fs');
 const readline = require('readline');
+import { exist } from 'fs';
 
 const config = require('./config.json')
 
@@ -152,13 +153,16 @@ function add_quote(msg){
 
 
 function read_quote(){
-    fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
-        if(err){
-            console.log(err)
-            return
-        }
-        console.log(data)
-        console.log("quote read")
-        return
-    })
+    if (fs.exist('path/to/file')) {
+        if (fs.read('path/to/file').length === 0) {
+            fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
+                if(err){
+                    console.log(err)
+                    return
+                }
+                console.log(data)
+                console.log("quote read")
+                return
+            })}
+    }       
 };
