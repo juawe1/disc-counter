@@ -53,7 +53,7 @@ client.on('messageCreate', async msg =>{
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
         console.log(`quote to add: ${msg}`)
-        add_quote(msg);
+        logger.write(msg.toString());
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
@@ -137,9 +137,9 @@ function kick_increase(data){
     return
 }
 
-function add_quote(msg){
+/*function add_quote(msg){
     quote_to_add = msg.toString().replace('!add', ' ');
-    fs.writeFile('./dom_quotes.txt', quote_to_add+"\r\n", err =>{
+    fs.appendFileSync('./dom_quotes.txt', quote_to_add+"\r\n", err =>{
         if (err) {
             console.log(err)
             return
@@ -148,16 +148,14 @@ function add_quote(msg){
         return
     });
     return
-}
+}*/
+
+const logger = fs.createWriteStream('dom_quotes.txt', {
+    flags: 'a'
+})
 
 function read_quote(){
-    let quotes = fs.readFileSync('./dom_quotes.txt', 'utf-8')
-
-    for (const line of quotes) {
-        console.log(line)
-    };
-
-    /*fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
+    fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
         if(err){
             console.log(err)
             return
@@ -165,5 +163,5 @@ function read_quote(){
         console.log(data)
         console.log("quote read")
         return
-    })*/
+    })
 };
