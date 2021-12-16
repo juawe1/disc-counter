@@ -53,7 +53,7 @@ client.on('messageCreate', async msg =>{
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
         console.log(`quote to add: ${msg}`)
-        quote_to_add(msg.toString());
+        add_quote(msg.toString());
         console.log("quote added to file")
         msg.reply("Quote has been added :)")
     }else if (msg.content === "!quote"){
