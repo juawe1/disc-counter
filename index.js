@@ -59,7 +59,7 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "!quote"){
         data = read_quote()
         if (data !== "empty"){
-            console.log(data.toString())
+            console.log(data)
         }
     };
 });
@@ -163,7 +163,8 @@ function read_quote(){
             console.log(err)
             return
         }
-        return data.toString()
+        console.log(data)
+        return data
     })
     }else{
         console.log("file is currently empty")
