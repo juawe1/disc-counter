@@ -30,12 +30,12 @@ client.on('ready', () =>{
 client.on('messageCreate', msg =>{
     if (msg.content === "!count"){
         data = kick_read()
-        msg.reply(`Lewis has been kicked ${data}`)
+        msg.reply(`Lewis has been kicked ${data} times`)
     }else if (msg.content === "!count sam") {
         data=kick_read()
         msg.reply(`Sam has been kicked ${data}`)
     }else if (msg.content === "!help"){
-        msg.reply('This bot counts how many times someone has been kicked for making dom cry. Type "!count" for lewis or "!count sam" for sam')
+        msg.reply('This bot counts how many times lewis has been kicked for making dom cry. Type "!count" to see how many time lewis was kicked')
     }else if (msg.content === "!data"){
         tempData = kick_read()
         console.log(tempData)
