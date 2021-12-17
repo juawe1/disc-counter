@@ -86,7 +86,7 @@ client.on('guildMemberRemove', member =>{
         client.guilds.cache.get(config.ServerID).channels.cache.get(config.GeneralChannelID).send(`Lewis has been kicked ${data} times.`);
         console.log(`Lewis has been kicked ${data} times`);
         kick_increase(data);
-    }else if (member === config.samID) {
+    }else if (member.user.id === config.samID) {
         console.log(member.user.id);
         data = kick_read();
         console.log(data);
