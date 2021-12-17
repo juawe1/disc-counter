@@ -1,7 +1,7 @@
 const testing = false;
 const fs = require('fs');
 const readline = require('readline');
-
+const quotes = require('./quote_module')
 const config = require('./config.json')
 
 const {Client, ThreadChannel} = require('discord.js');
@@ -13,6 +13,7 @@ const client = new Client({ intents: 583 });
 client.on('ready', () =>{
 
     console.log(`Logged in as ${client.user.tag}`)
+    console.log("client online")
     let data = '0'
     fs.writeFile('./kick_amounts.txt', data, err =>{
         if (err) {
@@ -27,7 +28,7 @@ client.on('ready', () =>{
     
 });
 
-client.on('messageCreate', async msg =>{
+client.on('messageCreate', msg =>{
     if (msg.content === "!count"){
         data = kick_read()
         msg.reply(`Lewis has been kicked ${data}`)
@@ -52,15 +53,9 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "sam"){
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
-        console.log(`quote to add: ${msg}`)
-        add_quote(msg.toString());
-        console.log("quote added to file")
-        msg.reply("Quote has been added :)")
+       console.log(quotes.add_quote(msg));
     }else if (msg.content === "!quote"){
-        data = read_quote()
-        if (data !== "empty"){
-            msg.reply(data)
-        }
+       console.log(quotes.read_quote()) 
     };
 });
 
@@ -107,8 +102,6 @@ client.on('guildMemberRemove', member =>{
 
 client.login(config.token);
 
-
-
 function kick_read(){
     let data = fs.readFileSync('./kick_amounts.txt', 'utf-8');
     for (const ch of data){
@@ -140,35 +133,6 @@ function kick_increase(data){
     return
 }
 
-function add_quote(msg){
-    //quote_to_add = msg.toString().replace('!add', ' ');
-    fs.appendFileSync('dom_quotes.txt', msg+"\n", err =>{
-        if (err) {
-            console.log(err)
-            return
-        }
-        console.log(`'${quote_to_add}' written to quote file`)
-        return
-    })
-}
-
-
-
-function read_quote(){
-    const stat = fs.statSync('./dom_quotes.txt');
-    console.log(stat.size)
-    if (stat.size > 0){
-        fs.readFile('./dom_quotes.txt', 'utf-8', (err, data) =>{
-        if(err){
-            console.log(err)
-            return
-        }
-        console.log(data)
-        return data
-    })
-    }else{
-        console.log("file is currently empty")
-        return "empty"
-    }
-   
-};
+/*client.emit('ready');
+let message = "!dom is a child"
+client.emit('messageCreate', message);*/
