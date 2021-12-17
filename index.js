@@ -59,7 +59,7 @@ client.on('messageCreate', async msg =>{
     }else if (msg.content === "!quote"){
         data = read_quote()
         if (data !== "empty"){
-            console.log(data)
+            msg.reply(data)
         }
     };
 });
