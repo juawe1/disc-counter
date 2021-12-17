@@ -1,10 +1,9 @@
 const testing = false;
 const fs = require('fs');
 const readline = require('readline');
-const quotes = require('./quote_module')
 const config = require('./config.json')
 
-const {Client, ThreadChannel} = require('discord.js');
+const {Client} = require('discord.js');
 
 const client = new Client({ intents: 583 });
 
