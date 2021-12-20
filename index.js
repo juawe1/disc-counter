@@ -1,8 +1,8 @@
-const testing = false;
+const testing = true;
 const fs = require('fs');
 const readline = require('readline');
 const config = require('./config.json')
-
+const quotes = require('./quote_module.js')
 const {Client} = require('discord.js');
 
 const client = new Client({ intents: 583 });
@@ -52,9 +52,9 @@ client.on('messageCreate', msg =>{
     }else if (msg.content === "sam"){
         msg.reply("but miller said")
     }else if (msg.content.includes("!add")){
-       console.log(quotes.add_quote(msg));
+       msg.reply(quotes.add_quote(msg))
     }else if (msg.content === "!quote"){
-       console.log(quotes.read_quote()) 
+       msg.reply(quotes.read_quote()) 
     };
 });
 
