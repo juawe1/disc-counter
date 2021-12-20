@@ -13,7 +13,8 @@ client.on('ready', () =>{
 
     console.log(`Logged in as ${client.user.tag}`)
     console.log("client online")
-    let data = '0'
+    console.log(`kick counter: ${kick_read()}`)
+    /*let data = '0'
     fs.writeFile('./kick_amounts.txt', data, err =>{
         if (err) {
             console.log(err)
@@ -23,7 +24,7 @@ client.on('ready', () =>{
     })
     if (testing){
        client.guilds.cache.get("919382180449370173").channels.cache.get("919382180449370176").send("Spook!");
-    };
+    };*/
     
 });
 
